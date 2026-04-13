@@ -1,0 +1,33 @@
+{
+  "1": {
+    "type": "Type 1",
+    "value": "6:19",
+    "external": false
+  },
+  "2": {
+    "type": "Type 2",
+    "value": "1:25",
+    "external": false
+  },
+  "3": {
+    "type": "Type 3",
+    "value": "0:10",
+    "external": false
+  },
+  "4": {
+    "type": "Type 4",
+    "value": "0:10",
+    "external": true,
+    "reconnect": true
+  },
+  "5": {
+    "type": "Type 5",
+    "value": "3:26",
+    "external": true
+  },
+  "6": {
+    "type": "Type 6",
+    "value": "6:05",
+    "external": false
+  }
+}

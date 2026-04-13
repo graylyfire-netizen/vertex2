@@ -1,0 +1,27 @@
+{
+  "name": "vertex-mcbe",
+  "version": "2.7.6",
+  "description": "Vertex MCBE Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@jsprismarine/jsbinaryutils": "^5.5.3",
+    "@roamhq/wrtc": "^0.9.1",
+    "cheerio": "^1.1.2",
+    "debug": "^4.4.1",
+    "eris": "^0.18.0",
+    "json-bigint": "^1.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.0",
+    "prismarine-nbt": "^2.7.0",
+    "protodef": "^1.19.0",
+    "smart-buffer": "^4.2.0",
+    "uuid-1345": "^1.0.2",
+    "ws": "^8.18.3"
+  }
+}
