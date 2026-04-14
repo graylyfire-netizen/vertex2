@@ -3,7 +3,7 @@ const { Framer } = require('./transforms/framer')
 
 const cipher = require('./transforms/encryption')
 
-const config = require("../../ext/config.json")
+const config = require("../ext/config.js");
 
 const ClientStatus = {
   Disconnected: 0,
