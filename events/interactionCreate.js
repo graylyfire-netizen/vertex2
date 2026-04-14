@@ -9,7 +9,7 @@ const Embed = require("../classes/Embed.js");
 
 const { whitelistedRealmsModel } = require("../common/Database.js");
 
-const config = require("../ext/config.json");
+const config = require("../config"); // ✅ FIXED
 const cooldowns = new Map();
 
 client.on("interactionCreate", (interaction) => {
@@ -68,7 +68,7 @@ async function CommandInteraction(interaction) {
   console.log(`${member.username} (${member.id}) used the command /${interaction.data.name} ${stringArgs}`);
 
   const commandUsedEmbed = new Embed();
-  commandUsedEmbed.thumbnail.url = guild?.iconURL ?? member.avatarURL
+  commandUsedEmbed.thumbnail.url = guild?.iconURL ?? member.avatarURL;
   commandUsedEmbed.fields = [
     {
       name: "Command",
@@ -95,7 +95,7 @@ async function CommandInteraction(interaction) {
       value: guild ? `<@${guild.ownerID}>` : "N/A",
       inline: true
     }
-  ]
+  ];
 
   let commandHandler = new CommandHandler(member, guild, command, cooldowns, interaction, args);
 
@@ -106,9 +106,15 @@ async function CommandInteraction(interaction) {
 
     if (result === "Restricted" || result === "onCooldown") return;
 
-    command.execute(interaction, args, commandHandler.dbUser, new Embed(), commandHandler.clearCooldown.bind(commandHandler));
+    command.execute(
+      interaction,
+      args,
+      commandHandler.dbUser,
+      new Embed(),
+      commandHandler.clearCooldown.bind(commandHandler)
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
 
     errEmbed.description = `\`\`${error}\`\``;
 
@@ -120,7 +126,7 @@ async function CommandInteraction(interaction) {
 
     commandHandler?.clearCooldown();
   }
-};
+}
 
 async function ComponentInteraction(interaction) {
   try {
@@ -128,7 +134,8 @@ async function ComponentInteraction(interaction) {
 
     const command = interaction.message.interaction;
 
-    const { componentPressEvent, componentSelectEvent } = client.commands.get(command.name.split(" ")[0]);
+    const { componentPressEvent, componentSelectEvent } =
+      client.commands.get(command.name.split(" ")[0]);
 
     const { custom_id } = interaction.data;
 
@@ -149,7 +156,7 @@ async function ComponentInteraction(interaction) {
 
     client.createMessage(config.error_log_channel, { embed: errEmbed });
   }
-};
+}
 
 async function AutocompleteInteraction(interaction) {
   try {
@@ -172,4 +179,4 @@ async function AutocompleteInteraction(interaction) {
 
     client.createMessage(config.error_log_channel, { embed: errEmbed });
   }
-};
+}
