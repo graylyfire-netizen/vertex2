@@ -9,7 +9,7 @@ const { getMCData } = require("./common/Util.js");
 const Embed = require("./classes/Embed.js");
 
 // ✅ use safe config (NOT json with tokens)
-const config = require("./ext/config.js");
+const config = require("./config");
 
 getMCData();
 require("./common/ProtocolReplacement.js");
