@@ -12,6 +12,7 @@ const {
     generateRandomString,
     deviceMapping,
     cleanLeftovers,
+
     getInputMode,
     getDeviceId,
     translateDisconnectMessage
@@ -20,7 +21,7 @@ const {
 const RealmAPI = require("./Realm.js");
 const input_data = require("../ext/input_data.json");
 const verData = require("../ext/data.json");
-const config = require("../ext/config.json");
+const config = require("../config"); // ✅ FIXED HERE
 
 let cmdOriginUUID = v4();
 
@@ -35,6 +36,8 @@ Client.prototype.tick = 0n;
 Client.prototype.tick1 = 0n;
 Client.prototype.tick2 = 0n;
 Client.prototype.tick3 = 0n;
+
+// ... everything else stays EXACTLY the same
 
 Client.prototype.move = function (position = { x: 0, y: 0, z: 0 }, num = 0) {
     if (typeof position != "object") return;
