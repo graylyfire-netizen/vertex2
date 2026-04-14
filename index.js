@@ -106,3 +106,11 @@ setTimeout(() => {
   console.log("Restarting...");
   process.exit(0);
 }, 86400000);
+
+// ✅ Render keep-alive (fix "No open ports detected")
+
+require("http")
+  .createServer((req, res) => {
+    res.end("Bot is running");
+  })
+  .listen(process.env.PORT || 3000);
