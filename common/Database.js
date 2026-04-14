@@ -1,7 +1,7 @@
 "use strict";
 
 const mongoose = require("mongoose");
-const config = require("../ext/config.js"); // ✅ FIXED (no more .json)
+const config = require("./config"); // ✅ FIXED (no more .json)
 
 // ===== USER SCHEMA =====
 const userSchema = new mongoose.Schema({
