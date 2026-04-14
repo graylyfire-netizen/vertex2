@@ -1,5 +1,12 @@
 "use strict";
 
+// ✅ Render port fix (MUST be at top)
+require("http")
+  .createServer((req, res) => {
+    res.end("Bot is running");
+  })
+  .listen(process.env.PORT || 3000, "0.0.0.0");
+
 require('dotenv').config(); // ✅ load env variables
 
 const Eris = require("eris");
@@ -8,13 +15,13 @@ const fs = require("node:fs");
 const { getMCData } = require("./common/Util.js");
 const Embed = require("./classes/Embed.js");
 
-// ✅ use safe config (NOT json with tokens)
+// ✅ use safe config
 const config = require("./config");
 
 getMCData();
 require("./common/ProtocolReplacement.js");
 
-// ✅ SAFE TOKEN (from Render env)
+// ✅ SAFE TOKEN
 const token = process.env.IS_BETA === "true"
   ? process.env.BETA_TOKEN
   : process.env.PROD_TOKEN;
@@ -29,7 +36,7 @@ module.exports = {
   client
 };
 
-// ✅ load ALL events (fixed)
+// ✅ load ALL events
 const eventFiles = fs.readdirSync("./events/");
 eventFiles.forEach(file => require(`./events/${file}`));
 
@@ -106,11 +113,3 @@ setTimeout(() => {
   console.log("Restarting...");
   process.exit(0);
 }, 86400000);
-
-// ✅ Render keep-alive (fix "No open ports detected")
-
-require("http")
-  .createServer((req, res) => {
-    res.end("Bot is running");
-  })
-  .listen(process.env.PORT || 3000);
